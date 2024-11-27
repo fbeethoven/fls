@@ -16,11 +16,11 @@ example use:
 #include <fls/logger.h>
 
 int main() {
-    fls_logger_level_set(flsINFO);
+    fls_logger_level_set(FlsINFO);
 
-    fls_loggger(flsDEBUG, "Hello World");
+    fls_logger(FlsDEBUG, "Hello World");
     char *msg = "unexpected";
-    fls_loggger(flsWARNING, "something happen: %s", msg);
+    fls_logger(FlsWARNING, "something happen: %s", msg);
 
     return 0;
 }
@@ -30,6 +30,7 @@ link with fls lib on your build system e.g. `clang main.c -lmylib`.
 
 ## ROADMAP
  - [ ] v0.1.0: logger.h memory.h collection.h
+    - [ ] v0.1.1: string.h (optional. How often we need string slices, concat etc...)
  - [ ] v0.2.0: tokenizer.h json.h
  - [ ] v0.3.0: graphics.h
  - [ ] v1.0.0: ui.h
