@@ -7,7 +7,8 @@ Use cmake to install.
 mkdir build
 cd build
 cmake ..
-make install
+make
+ctest --output-on-failure
 ```
 
 example use:

@@ -24,9 +24,12 @@ add_custom_target(generatelibs
 include(CTest)
 file(GLOB TEST_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/tests/*.c")
 
-add_executable(tests ${TEST_SOURCES})
-target_link_libraries(tests PRIVATE fls)
-add_test(NAME tests COMMAND tests)
+foreach(test ${TEST_SOURCES})
+    get_filename_component(TEST_NAME ${test} NAME_WE)
+    add_executable(${TEST_NAME} ${test})
+    target_link_libraries(${TEST_NAME} PRIVATE fls)
+    add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+endforeach()
 
 #install(TARGETS fls ARCHIVE DESTINATION lib)
 #install(DIRECTORY include/ DESTINATION include)
