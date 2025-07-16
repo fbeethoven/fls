@@ -27,8 +27,8 @@ typedef struct FlsArenaHanle {
 bool fls_arena_init(FlsArena *arena);
 bool fls_arena_init_capacity(FlsArena *arena, size_t capacity);
 void *fls_arena_push_(FlsArena *arena, size_t type_size, int num);
-#define fls_arena_push(arena, type, num) \
-    (type *) fls_arena_push_((arena), sizeof(type), (num))
+#define fls_arena_alloc_many(arena, type, num) \
+    (type *) __fls_arena_alloc_many((arena), sizeof(type), (num))
 void fls_arena_reset(FlsArena *arena);
 void fls_arena_free(FlsArena *arena);
 void fls_arena_pop(FlsArena *arena);
